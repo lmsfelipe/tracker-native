@@ -1,3 +1,4 @@
+import React from 'react';
 import {
   createAppContainer,
   createSwitchNavigator,
@@ -11,6 +12,8 @@ import AccountScreen from './src/screens/AccountScreen';
 import TrackCreateScreen from './src/screens/TrackCreateScreen';
 import TrackDetailScreen from './src/screens/TrackDetailScreen';
 import TrackListScreen from './src/screens/TrackListScreen';
+import { Provider as AuthProvider } from './src/context/AuthContext';
+import { setNavigator } from './src/navigationRef';
 
 const switchNavigator = createSwitchNavigator({
   loginFlow: createStackNavigator({
@@ -27,4 +30,10 @@ const switchNavigator = createSwitchNavigator({
   }),
 });
 
-export default createAppContainer(switchNavigator);
+const App = createAppContainer(switchNavigator);
+
+export default () => (
+  <AuthProvider>
+    <App ref={navigator => setNavigator(navigator)} />
+  </AuthProvider>
+);
