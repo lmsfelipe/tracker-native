@@ -1,7 +1,8 @@
 import React, { useContext } from 'react';
-import { StyleSheet, Text } from 'react-native';
+import { Text } from 'react-native';
 import { Button } from 'react-native-elements';
 import { SafeAreaView } from 'react-navigation';
+import { FontAwesome } from '@expo/vector-icons';
 
 import { Context as AuthContext } from '../context/AuthContext';
 import Spacer from '../components/Spacer';
@@ -19,6 +20,9 @@ const AccountScreen = () => {
   );
 };
 
-const styles = StyleSheet.create({});
+AccountScreen.navigationOptions = {
+  title: 'Account',
+  tabBarIcon: <FontAwesome name="gear" size={20} />,
+};
 
 export default AccountScreen;
